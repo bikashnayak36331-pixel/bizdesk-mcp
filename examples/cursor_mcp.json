@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "bizdesk": {
+      "command": "uvx",
+      "args": ["--from", "git+https://github.com/bikashnayak36331-pixel/bizdesk-mcp", "bizdesk-mcp"]
+    }
+  }
+}

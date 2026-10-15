@@ -1,0 +1,50 @@
+[build-system]
+requires = ["hatchling>=1.25"]
+build-backend = "hatchling.build"
+
+[project]
+name = "bizdesk-mcp"
+version = "1.0.0"
+description = "An MCP server that gives Claude a small-business back office: clients, quotes, invoices (PDF), payments and reports."
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+requires-python = ">=3.10"
+authors = [{ name = "Bikash Nayak" }]
+keywords = ["mcp", "model-context-protocol", "claude", "invoicing", "small-business", "ai-agent"]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "Intended Audience :: End Users/Desktop",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Topic :: Office/Business :: Financial :: Accounting",
+]
+dependencies = [
+    "mcp>=2.3,<3",
+    "reportlab>=4.2",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "anyio>=4.9", "ruff>=0.6", "pypdf>=5", "rich>=13"]
+
+[project.scripts]
+bizdesk-mcp = "bizdesk_mcp.server:main"
+
+[project.urls]
+Homepage = "https://github.com/bikashnayak36331-pixel/bizdesk-mcp"
+Issues = "https://github.com/bikashnayak36331-pixel/bizdesk-mcp/issues"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/bizdesk_mcp"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.ruff]
+line-length = 120
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
